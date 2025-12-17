@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YANG YI-CHEN | Research & Engineering Portfolio</title>
+
+<style>
+:root{
+  --bg:#0f172a;
+  --glass:rgba(255,255,255,.08);
+  --neon:#f43f5e;
+  --line:rgba(255,255,255,.15);
+  --blur:blur(18px);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Segoe UI",system-ui;
+}
+
+body{
+  background:var(--bg);
+  color:#e5e7eb;
+  overflow-x:hidden;
+}
+
+/* ===== 背景 ===== */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(244,63,94,.15), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(59,130,246,.18), transparent 45%),
+    linear-gradient(120deg,#020617,#0f172a,#1e293b);
+  background-size:400% 400%;
+  animation:bgMove 18s infinite alternate;
+  z-index:-2;
+}
+
+@keyframes bgMove{
+  0%{background-position:0% 50%}
+  100%{background-position:100% 50%}
+}
+
+/* ===== 滑鼠霓虹光暈 ===== */
+#glow{
+  position:fixed;
+  width:320px;
+  height:320px;
+  border-radius:50%;
+  pointer-events:none;
+  background:radial-gradient(circle,rgba(244,63,94,.35),transparent 70%);
+  transform:translate(-50%,-50%);
+  z-index:-1;
+}
+
+/* ===== HERO ===== */
+.hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  align-items:center;
+  padding:4rem 10%;
+  gap:3rem;
+}
+
+.hero h1{
+  font-size:clamp(3rem,6vw,4.5rem);
+  letter-spacing:.22em;
+}
+
+.hero .subtitle{
+  margin-top:1rem;
+  color:var(--neon);
+  font-weight:600;
+  letter-spacing:.14em;
+}
+
+.hero p{
+  margin-top:1.6rem;
+  max-width:480px;
+  line-height:1.85;
+  opacity:.9;
+}
+
+/* ===== Avatar ===== */
+.avatar{
+  display:flex;
+  justify-content:center;
+}
+
+.avatar img{
+  width:280px;
+  height:280px;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid var(--neon);
+  box-shadow:0 0 70px rgba(244,63,94,.65);
+}
+
+/* ===== Section ===== */
+section{
+  padding:5rem 10%;
+}
+
+section h2{
+  font-size:2.3rem;
+  margin-bottom:2.8rem;
+  color:var(--neon);
+  letter-spacing:.14em;
+}
+
+/* ===== Card ===== */
+.card{
+  background:var(--glass);
+  backdrop-filter:var(--blur);
+  border-radius:22px;
+  padding:2rem;
+  border:1px solid var(--line);
+  transition:.35s;
+}
+
+.card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 40px rgba(244,63,94,.45);
+}
+
+/* ===== About ===== */
+.about{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:2rem;
+}
+
+.card a{
+  color:var(--neon);
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* ===== Timeline ===== */
+.timeline{
+  display:grid;
+  gap:2rem;
+}
+
+.event{
+  padding-left:1.6rem;
+  border-left:3px solid var(--neon);
+}
+
+.event span{
+  color:#94a3b8;
+  font-size:.9rem;
+}
+
+/* ===== Portfolio ===== */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:2.2rem;
+}
+
+.item{
+  height:210px;
+  position:relative;
+  padding:1.7rem;
+  border-radius:24px;
+  background:linear-gradient(135deg,rgba(244,63,94,.28),rgba(59,130,246,.28));
+  backdrop-filter:var(--blur);
+  overflow:hidden;
+  transition:.45s;
+}
+
+.item::before{
+  content:"";
+  position:absolute;
+  inset:-80%;
+  background:repeating-linear-gradient(
+    45deg,
+    rgba(255,255,255,.08),
+    rgba(255,255,255,.08) 2px,
+    transparent 2px,
+    transparent 14px
+  );
+  transform:rotate(30deg);
+}
+
+.item:hover{
+  transform:scale(1.14);
+}
+
+.item span{
+  position:relative;
+  z-index:1;
+  font-weight:700;
+  line-height:1.6;
+}
+
+/* ===== 泡泡（大顆） ===== */
+.bubble{
+  position:fixed;
+  bottom:-140px;
+  border-radius:50%;
+  background:radial-gradient(circle,
+    rgba(244,63,94,.45),
+    rgba(244,63,94,.18),
+    transparent 70%
+  );
+  filter:blur(1px);
+  animation:float 12s linear forwards;
+}
+
+@keyframes float{
+  to{
+    transform:translateY(-120vh) scale(1.6);
+    opacity:0;
+  }
+}
+
+/* ===== RWD ===== */
+@media(max-width:768px){
+  .hero{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="glow"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h1>YANG<br>YI-CHEN</h1>
+    <div class="subtitle">Research · Engineering · Robotics</div>
+    <p>
+      具備論文研究能力與工程實作經驗之技職學生，
+      專注於機器人、工業電子與電機電子領域，
+      目標進入大學實驗室進行長期研究與技術深化。
+    </p>
+  </div>
+  <div class="avatar">
+    <img src="avatar.jpg" alt="avatar">
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section>
+  <h2>Academic Background</h2>
+  <div class="about">
+    <div class="card">
+      <h3>學歷</h3>
+      <p><a href="https://csjs.tc.edu.tw/" target="_blank">清水國中</a></p>
+      <p><a href="https://tcvs.tc.edu.tw/" target="_blank">大甲高工</a></p>
+    </div>
+    <div class="card">
+      <h3>研究與專長</h3>
+      <p>機器人控制、工業電子、電機電子、論文撰寫、工程專題整合</p>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section>
+  <h2>Academic Timeline</h2>
+  <div class="timeline">
+    <div class="event"><span>2023</span><p>第54屆機器人職類分區技能競賽</p></div>
+    <div class="event"><span>2024</span><p>第55屆機器人職類分區技能競賽</p></div>
+    <div class="event"><span>2023</span><p>台中市電機電子群技能競賽 第三名</p></div>
+    <div class="event"><span>2024</span><p>小論文競賽 甲等（113/10/15）</p></div>
+    <div class="event"><span>2025</span><p>小論文競賽 甲等（114/10/15）</p></div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section>
+  <h2>Portfolio & Achievements</h2>
+  <div class="grid">
+    <div class="item"><span>第55屆機器人職類<br>分區技能競賽</span></div>
+    <div class="item"><span>第54屆機器人職類<br>分區技能競賽</span></div>
+    <div class="item"><span>台中市電機電子群<br>技能競賽 第三名</span></div>
+    <div class="item"><span>工業電子<br>丙級證照</span></div>
+    <div class="item"><span>硬體裝修<br>丙級證照</span></div>
+    <div class="item"><span>113/10/15<br>小論文 甲等</span></div>
+    <div class="item"><span>114/10/15<br>小論文 甲等</span></div>
+    <div class="item"><span>工程專題<br>研究整合成果</span></div>
+  </div>
+</section>
+
+<script>
+/* ===== 霓虹光暈 ===== */
+const glow=document.getElementById("glow");
+window.addEventListener("mousemove",e=>{
+  glow.style.left=e.clientX+"px";
+  glow.style.top=e.clientY+"px";
+});
+
+/* ===== 泡泡（3 秒未互動，大顆） ===== */
+let lastMove=Date.now();
+window.addEventListener("mousemove",()=>lastMove=Date.now());
+
+setInterval(()=>{
+  if(Date.now()-lastMove>3000){
+    const b=document.createElement("div");
+    b.className="bubble";
+    const size=60+Math.random()*60; // 60–120px
+    b.style.width=b.style.height=size+"px";
+    b.style.left=Math.random()*100+"vw";
+    document.body.appendChild(b);
+    setTimeout(()=>b.remove(),12000);
+  }
+},900);
+</script>
+
+</body>
+</html>
